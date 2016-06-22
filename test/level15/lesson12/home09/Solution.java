@@ -22,8 +22,6 @@ obj name
 double 3.14
 */
 
-import com.javarush.test.level15.lesson12.home04.Earth;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -32,11 +30,18 @@ public class Solution {
         //add your code here
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String s = reader.readLine();
-        String[] arr = s.substring(s.indexOf("?")+1).split("&");
-        for (String each : arr)
+        String[] arr = s.substring((s.indexOf("?")+1)).split("&");
+        String[] parameter = new String[arr.length];
+        String[] value = new String[arr.length];
+        for (int i = 0; i < arr.length; i++)
         {
-            String rez = each.substring(0, each.indexOf("="));
-            System.out.println(rez);
+            if (arr[i].contains("="))
+            {
+                parameter[i] = arr[i].substring(0, (arr[i].indexOf("=") + 1));
+                value[i] = arr[i].substring(0, arr[i].indexOf("=") + 1);
+                System.out.println(parameter[i] + "***" + value[i]);
+                System.out.println(arr[i]);
+            }
         }
     }
 
